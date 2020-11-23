@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+ }
+
+body {
+    background-color: #444;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+    font-family: 'Permanent';
+    src: url('../fonts/Permament.ttf');
+}
+
+[flappy] {
+    position: relative;
+    border: 5px solid #290B70;
+    height: 700px;
+    width: 1200px;
+    margin: 15px;
+    background-color: #06227D;
+}
+
+.ufo {
+    position: absolute;
+    width: 60px;
+    left: calc(50% - 30px);
+}
+
+.pair-of-tubes {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tube {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tube .edge {
+    height: 30px;
+    width: 130px;
+    background: linear-gradient(90deg, #005C08, #00780A);
+    border: 2px solid #000;
+}
+
+.tube .body {
+    height: 100px;
+    width: 110px;
+    background: linear-gradient(90deg, #005C08, #00780A);
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+.score {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: 'Permanent';
+    font-size: 70px;
+    z-index: 100;
+}
