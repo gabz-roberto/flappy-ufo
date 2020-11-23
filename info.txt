@@ -1,0 +1,5 @@
+Portuguese:
+Esse é um pequeno projeto de início de estudos em HTML, CSS e JavaScript, criando um game inspirado no Flappy Bird, utilizando somente as três tecnologias.
+
+English:
+This is a small project to start studying HTML, CSS and JavaScript, creating a game inspired by Flappy Bird, using only the three technologies.
