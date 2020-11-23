@@ -104,8 +104,8 @@ function Score() {
 }
 
 function areOverlapping(elementA, elementB) {
-    const a = elementoA.getBoundingClientRect()
-    const b = elementoB.getBoundingClientRect()
+    const a = elementA.getBoundingClientRect()
+    const b = elementB.getBoundingClientRect()
 
 
     const horizontal = a.left + a.width >= b.left
@@ -116,3 +116,47 @@ function areOverlapping(elementA, elementB) {
 
     return horizontal && vertical
 }
+
+function hit(ufo, tubes) {
+    let hit = false
+    tubes.pairs.forEach(pairOfTubes => {
+        if(!hit) {
+            const higher = pairOfTubes.higher.element
+            const bottom = pairOfTubes.bottom.element
+        
+            hit = areOverlapping(ufo.element, higher)
+                || areOverlapping(ufo.element, bottom)
+        }
+    })
+    return hit
+}
+
+function FlappyUFO() {
+    let score = 0
+
+    const gameArea = document.querySelector('[flappy]')
+    const height = gameArea.clientHeight
+    const width = gameArea.clientWidth
+
+    const progress = new Score()
+    const tubes = new Tubes(height, width, 200, 400,
+        () => progress.updateScore(++score))
+    const ufo = new UFO(height)
+
+    gameArea.appendChild(progress.element)
+    gameArea.appendChild(ufo.element)
+    tubes.pairs.forEach( pair => gameArea.appendChild(pair.element))
+
+    this.start = () => {
+        const timer = setInterval(() => {
+            tubes.animate()
+            ufo.animate()
+
+            if(hit(ufo, tubes)) {
+                clearInterval(timer)
+            }
+        }, 20)
+    }
+}
+
+new FlappyUFO().start()
